@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a2e;
+            color: #e94560;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 0 0 10px #e94560, 0 0 20px #e94560;
+        }
+        p {
+            color: #c4c4c4;
+            font-size: 1.2em;
+            max-width: 600px;
+            text-align: center;
+        }
+        .warning-box {
+            border: 2px solid #e94560;
+            padding: 20px 40px;
+            margin: 20px;
+            background-color: rgba(233, 69, 96, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .btn-malicious {
+            background-color: #e94560;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .btn-malicious:hover {
+            background-color: #ff2e4d;
+            box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+        }
+        .skull {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            color: #555;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="skull">&#9760;</div>
+    <h1>YOU HAVE BEEN INTERCEPTED</h1>
+    <div class="warning-box">
+        <p>This page has been injected via a Man-in-the-Middle attack.
+           The original server response was replaced with this content.</p>
+        <p>Your connection is <strong>NOT</strong> secure.</p>
+        <button class="btn-malicious" onclick="void(0)">DOWNLOAD SECURITY UPDATE</button>
+    </div>
+</body>
+</html>
