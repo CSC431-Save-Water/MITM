@@ -1,7 +1,3 @@
-# ============================================================
-# MITM Configuration - Change these values to match your setup
-# ============================================================
-
 VICTIM_IP = "10.0.101.64"
 SERVER_IP = "10.0.101.71"
 INTERFACE = "eth0"         # Network interface (use "ip a" to find yours)

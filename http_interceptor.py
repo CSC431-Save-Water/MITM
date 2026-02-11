@@ -1,7 +1,5 @@
-#!/usr/bin/env python3
 """
 HTTP Interceptor Proxy for MITM Demonstration
-School Project - Use only on your own network in a controlled VM environment.
 """
 
 import socket

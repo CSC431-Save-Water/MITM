@@ -1,9 +1,3 @@
-#!/bin/bash
-# ============================================================
-# MITM Setup Script - School Project Demonstration
-# Run this on the ATTACKER machine (Linux VM)
-# ============================================================
-
 VICTIM_IP="10.0.101.64"
 SERVER_IP="10.0.101.71"
 IFACE="eth0"
