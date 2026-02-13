@@ -1,34 +1,29 @@
 import threading
 import requests
 
-# The target URL of your lab server
 TARGET_URL = "http://localhost:8000/"
+THREADS = 100 # Increased for lab load testing
 
-# Number of concurrent threads to spawn
-THREADS = 50 
-
-def send_requests():
-    """Continuously sends requests to the server."""
+def aggressive_request():
+    # Session keeps the connection open, putting more pressure on the server's state
+    session = requests.Session()
     while True:
         try:
-            # We don't even need to process the response, 
-            # just making the request triggers the server's memory allocation.
-            requests.get(TARGET_URL, timeout=5)
+            # Short timeout prevents the script from hanging on a "stuck" server
+            session.get(TARGET_URL, timeout=1)
         except requests.exceptions.RequestException:
-            # This will trigger once the server starts failing/dropping connections
-            print("Server is no longer responding.")
+            print("Target unreachable. Resource exhaustion likely achieved.")
             break
 
 if __name__ == "__main__":
-    print(f"Starting load simulation on {TARGET_URL}...")
-    
-    thread_list = []
-    for i in range(THREADS):
-        t = threading.Thread(target=send_requests)
-        t.daemon = True # Allows script to exit easily
-        thread_list.append(t)
+    print(f"Beginning high-concurrency test on {TARGET_URL}")
+    for _ in range(THREADS):
+        t = threading.Thread(target=aggressive_request, daemon=True)
         t.start()
-
-    # Keep the main thread alive while workers run
-    for t in thread_list:
-        t.join()
+    
+    # Keeping the main thread alive
+    try:
+        while True:
+            pass
+    except KeyboardInterrupt:
+        print("Test stopped.")
